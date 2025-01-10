@@ -39,12 +39,14 @@ def align_responses():
         df = pd.read_csv(csv_file_name,
                         names=["time [ms]", f"{csv_file_name.stem}"]) # add column names
         #print(df)
-        
-        # select value of 2nd column where time = -0.5
-        df_flash = df[ df["time [ms]"] == -0.5 ]
+
+        # select value of 2nd column where time is either -0.5 or -0.4
+        flashpoints = [-0.5, -0.4]
+        mask = df["time [ms]"].isin(flashpoints)
+        df_flash = df[mask]
         print(f"\nJust to inform. This is the row to be shifted to zero of {f'{csv_file_name.stem}'}:\n{df_flash}")
         
-        value_shift = df[f"{csv_file_name.stem}"][df["time [ms]"] == -0.5 ].values[0]
+        value_shift = df[f"{csv_file_name.stem}"][mask].values[0]
         #print(f"\nThis is the value to be shifted to zero of {f'{csv_file_name.stem}'}:\n{value_shift}")
         
         # substract value_shift from the whole column
