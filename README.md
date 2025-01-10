@@ -1,6 +1,6 @@
 # README
 
-The two scripts should speed up evaluations of ERG measurements. They align the responses from the ERG results to the flashpoint (here: -0.5 ms).
+The two scripts should speed up evaluations of ERG measurements. They align the responses from the ERG results to the flashpoint (here: -0.5 ms or -0.4 ms).
 
 The data obtained after ERG measurement with the HMsERG / ERG system (Ocuscience LLC, USA) can be exported as CSV file. This CSV file consists of two columns, the first is the time [ms], the second is the response [µV]. To be able to compare ERG curves, these scripts shift the response values so that the response is zero where time is -0.5 (this is the flashpoint). They add an additional column to the CSV file with the aligned response values.
 
